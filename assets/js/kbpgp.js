@@ -858,7 +858,7 @@
 
                 exports.header = {
                     version: "Keybase OpenPGP",
-                    comment: "https://keybase.io/crypto"
+                    comment: "https://pgp.najm.uk"
                 };
 
                 config = {
@@ -3901,7 +3901,7 @@
                 pjs = require('../package.json');
 
                 exports.header = {
-                    version: C.header.version + (" v" + pjs.version),
+                    version: C.header.version,
                     comment: C.header.comment
                 };
 
