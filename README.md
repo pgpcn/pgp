@@ -10,8 +10,7 @@ This is a simple and secure online client-side PGP Key Generator, Encryption and
 
 ## Usage
 
-Vist the [PGP Tool](https://pgp.najm.uk) page and start using it.
-Open `index.html` in your web browser.
+Visit the [PGP Tool](https://pgp.najm.uk) page and start using it, or Open `index.html` in your web browser.
 
 ## Dependencies
 
@@ -27,4 +26,4 @@ Open `index.html` in your web browser.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+This project is licensed under the Apache License 2.0 - see the LICENSE file for details.
