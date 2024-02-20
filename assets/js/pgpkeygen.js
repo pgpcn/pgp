@@ -179,37 +179,57 @@ var calcSubkeySize = function(algo, bitlength) {
 var populateKeysizeDropdown = function() {
 
     /* Accepted RSA key sizes */
-    rsa_bitlengths = [{
-            "value": "",
-            "class": "disabled",
-            "text": "Select key size...",
-            "selected": "selected"
-        },
-        {
-            "value": "1024",
-            "class": null,
-            "text": "1024 bits (good for testing purposes)",
-            "selected": null
-        },
-        {
-            "value": "2048",
-            "class": null,
-            "text": "2048 bits (secure)",
-            "selected": null
-        },
-        {
-            "value": "4096",
-            "class": null,
-            "text": "4096 bits (more secure) [Recommended]",
-            "selected": null
-        },
-        {
-            "value": "8192",
-            "class": null,
-            "text": "8192 bits (super secure, super slow)",
-            "selected": null
-        },
-    ]
+        rsa_bitlengths = [
+    {
+        "value": "",
+        "class": "disabled",
+        "text": "Select key size...",
+        "selected": "selected"
+    },
+    {
+        "value": "1024",
+        "class": null,
+        "text": "1024 bits (good for testing purposes)",
+        "selected": null
+    },
+    {
+        "value": "2048",
+        "class": null,
+        "text": "2048 bits (secure)",
+        "selected": null
+    },
+    {
+        "value": "4096",
+        "class": null,
+        "text": "4096 bits (more secure) [Recommended]",
+        "selected": null
+    },
+    {
+        "value": "8192",
+        "class": null,
+        "text": "8192 bits (super secure, super slow)",
+        "selected": null
+    },
+    {
+        "value": "16384",
+        "class": null,
+        "text": "16384 bits (ultra secure, extremely slow)",
+        "selected": null
+    },
+    {
+        "value": "32768",
+        "class": null,
+        "text": "32768 bits (insanely secure, extremely slow)",
+        "selected": null
+    },
+    {
+        "value": "65536",
+        "class": null,
+        "text": "65536 bits (ridiculously secure, absurdly slow)",
+        "selected": null
+    }
+]
+
 
     /* Accepted ECC key sizes */
     ecc_bitlengths = [{
