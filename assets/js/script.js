@@ -179,6 +179,8 @@ function updateLink(input, link, as_binary, action) { //
 
 
 $(document).ready(function() {
+	
+  populateKeysizeDropdown();
   /* Dynamic key size menus */
   $('#algorithm').change(function() {
     populateKeysizeDropdown();
@@ -263,7 +265,7 @@ $(document).ready(function() {
               });
 
               clone = $('#vrSuccess').clone();
-              clone.find('#vrAddrLabel').html("Message successfully signed.");
+              clone.find('#vrAddrLabel').html("已成功对信息签名。");
               clone.appendTo($('#vrAlert_signed'));
             } else {
               console.log("Error" + err);

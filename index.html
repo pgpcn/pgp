@@ -5,11 +5,10 @@
         <!-- Set charset to UTF-8 -->
         <meta charset="utf-8">
         <div class="title">
-            <title>PGP Tool - Online PGP Key Generator Encryption Decryption Tool</title>
+            <title>PGP Tool - 在线 PGP 加密工具</title>
         </div>
-        <meta title="PGP Tool - Online PGP Key Generator Encryption Decryption Tool">
-        <meta name="description" content="A simple and secure online client-side PGP Key Generator, Encryption and Decryption tool. Generate your PGP Key pairs, encrypt or decrypt messages easily with a few clicks.">
-        <meta name="author" content="Heiswayi Nrird, Bjar">
+        <meta title="PGP Tool - 在线 PGP 加密工具">
+        <meta name="description" content="中文版的在线 PGP 工具，方便非技术人士使用信息加密">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" media="screen">
@@ -19,7 +18,7 @@
         <script type="text/javascript" src="assets/js/kbpgp.js"></script>
         <script type="text/javascript" src="assets/js/FileSaver.js"></script>
         <script type="text/javascript" src="assets/js/pgpkeygen.js"></script>
-        <!--[if IE 9]>
+    <!--[if IE 9]>
         <script type="text/javascript" src="index_files/js/placeholder.js"></script>
     <![endif]-->
         <script type="text/javascript" src="assets/js/script.js"></script>
@@ -45,33 +44,32 @@
             <div class="row content">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h1 class="title">PGP Tool</h1>
-                        A simple and secure online client-side PGP Key Generator, Encryption and Decryption tool. Generate your PGP Key pairs, encrypt or decrypt messages easily with a few clicks.
-                
+                        <h1 class="title">PGP Tool 中文版</h1>
+                        在线使用 PGP 加密、解密、生成密钥……所有计算都在本地浏览器，没有隐私数据被上传。
                     </div>
                     <div class="tabbable">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active">
-                                <a href="#generator" aria-controls="generator" role="tab" data-toggle="tab">Generate PGP Keys</a>
+                                <a href="#generator" aria-controls="generator" role="tab" data-toggle="tab">生成密钥</a>
+                            </li>
+							<li role="presentation">
+                                <a href="#signencrypt" aria-controls="sign" role="tab" data-toggle="tab">加密</a>
                             </li>
                             <li role="presentation">
-                                <a href="#sign" aria-controls="sign" role="tab" data-toggle="tab">Sign</a>
+                                <a href="#decrypt" aria-controls="decrypt" role="tab" data-toggle="tab">解密</a>
                             </li>
                             <li role="presentation">
-                                <a href="#verify" aria-controls="verify" role="tab" data-toggle="tab">Verify</a>
+                                <a href="#sign" aria-controls="sign" role="tab" data-toggle="tab">签名</a>
                             </li>
                             <li role="presentation">
-                                <a href="#signencrypt" aria-controls="sign" role="tab" data-toggle="tab">Encrypt</a>
+                                <a href="#verify" aria-controls="verify" role="tab" data-toggle="tab">验证签名</a>
                             </li>
                             <li role="presentation">
-                                <a href="#decrypt" aria-controls="decrypt" role="tab" data-toggle="tab">Decrypt</a>
+                                <a href="#faq" aria-controls="faq" role="tab" data-toggle="tab">问题</a>
                             </li>
                             <li role="presentation">
-                                <a href="#faq" aria-controls="faq" role="tab" data-toggle="tab">FAQ</a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#about" aria-controls="about" role="tab" data-toggle="tab">About</a>
+                                <a href="#about" aria-controls="about" role="tab" data-toggle="tab">关于本站</a>
                             </li>
                         </ul>
                         <!-- Tab panes -->
@@ -82,41 +80,34 @@
                                     <div class="col-md-5">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Options</h3>
+                                                <h3 class="panel-title">选项</h3>
+                                                <span id="helpBlock" class="help-block">
+                                                    不熟悉 PGP 原理的人，建议不要修改这些选项，使用默认的设置，直接点击下面的「生成密钥」
+                                                </span>												
                                             </div>
                                             <div class="panel-body">
                                                 <form action="" name="keygen" id="keygen" method="post">
                                                     <div class="form-group">
-                                                        <label class="sr-only" for="name">Your Name</label>
+                                                        <label class="sr-only" for="name">姓名</label>
                                                         <div class="input-group">
                                                             <div class="input-group-addon">
                                                                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                                             </div>
-                                                            <input class="form-control" name="name" placeholder="Your Name" id="name" title="" required="" data-original-title="Enter your name" data-cip-id="name" type="text">
-                                                            <div class="input-group-addon">Required</div>
+                                                            <input value="匿名" class="form-control" name="name" placeholder="Your Name" id="name" title="" required="" data-original-title="Enter your name" data-cip-id="name" type="text">
+                                                            <div class="input-group-addon">必需</div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="sr-only" for="email">Email</label>
+                                                        <label class="sr-only" for="email">电子邮箱</label>
                                                         <div class="input-group">
                                                             <div class="input-group-addon">
                                                                 <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
                                                             </div>
-                                                            <input class="form-control" name="email" placeholder="you@domain.com" id="email" title="" required="" data-original-title="Enter a valid email address" data-cip-id="email" type="email">
-                                                            <div class="input-group-addon">Required</div>
+                                                            <input value="nobody@email.address" class="form-control" name="email" placeholder="you@domain.com" id="email" title="" required="" data-original-title="Enter a valid email address" data-cip-id="email" type="email">
+                                                            <div class="input-group-addon">必需</div>
                                                         </div>
-                                                        <span id="helpBlock" class="help-block">
-                                                            <a href="#" data-toggle="popover" title="" data-content="Your email address will be included as public information in your public PGP key, so your public key can be easily imported by third-party PGP software. If you do not supply your email address, your PGP decryption software may be unable to link your email address to your public PGP key, and therefore unable to automatically encrypt/decrypt email messages. As a result, you will have to manually decrypt messages each time you receive a PGP-encrypted message." data-original-title="Email address">Email address: Why it is required?</a>
+                                                        <span id="helpBlock" class="help-block">												这些个人信息，会被写进生成的密钥。在使用一些第三方整合软件时，会更加便利。但是，非常容易泄漏个人身份！不熟悉 PGP 工作原理的人，强烈建议不要使用真实信息！
                                                         </span>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="sr-only" for="comments">Optional Comment</label>
-                                                        <div class="input-group">
-                                                            <div class="input-group-addon">
-                                                                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                                                            </div>
-                                                            <input class="form-control" name="comments" placeholder="Optional comments" id="comments" title="" data-original-title="Enter any optional comment" data-cip-id="comments" type="text">
-                                                        </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="sr-only" for="algorithm">Algorithm</label>
@@ -124,41 +115,51 @@
                                                             <div class="input-group-addon">
                                                                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                                                             </div>
-                                                            <select class="form-control" name="algorithm" id="algorithm" title="" required="" data-original-title="Choose an encryption algorithm" data-cip-id="cIPJQ342845639">
-                                                                <option value="" disabled="disabled" selected="selected" class="disabled">Select algorithm...</option>
-                                                                <option value="rsa">RSA (Recommended)</option>
+                                                            <select class="form-control" name="algorithm" id="algorithm" title="" required="" data-original-title="选择加密算法" data-cip-id="cIPJQ342845639">
+                                                                <option value="" disabled="enabled" class="disabled">选择加密算法...</option>
+                                                                <option value="rsa" selected="selected">RSA 算法（推荐）</option>
                                                                 <option value="ecc">ECC (Elliptic Curve Cryptography)</option>
                                                             </select>
-                                                            <div class="input-group-addon">Required</div>
+                                                            <div class="input-group-addon">必需</div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="sr-only" for="bitlength">Bit Length</label>
+                                                        <label class="sr-only" for="bitlength">密钥长度</label>
                                                         <div class="input-group">
                                                             <div class="input-group-addon">
                                                                 <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
                                                             </div>
-                                                            <select class="form-control" name="bitlength" id="bitlength" title="" required="" disabled="disabled" data-original-title="Select a key size" data-cip-id="cIPJQ342845640">
-                                                                <option value="" class="disabled" selected="selected">Select key size...</option>
+                                                            <select class="form-control" name="bitlength" id="bitlength" title="" required="" data-original-title="选择密钥长度" data-cip-id="cIPJQ342845640">
+                                                                <option value="" class="disabled" selected="selected">选择密钥长度...</option>
                                                             </select>
-                                                            <div class="input-group-addon">Required</div>
+                                                            <div class="input-group-addon">必需</div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="sr-only" for="expire">Expires</label>
+                                                        <label class="sr-only" for="expire">有效时间</label>
                                                         <div class="input-group">
                                                             <div class="input-group-addon">
                                                                 <span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span>
                                                             </div>
                                                             <select name="expire" id="expire" class="form-control" title="" required="" data-original-title="Expiration of your subkeys" data-cip-id="cIPJQ342845641">
-                                                                <option value="" disabled="disabled" selected="selected" class="disabled">Select expiry duration...</option>
-                                                                <option value="0">Never</option>
-                                                                <option value="1">1 year</option>
-                                                                <option value="2">2 years</option>
-                                                                <option value="4">4 years</option>
-                                                                <option value="8">8 years</option>
+                                                                <option value="" disabled="disabled" class="disabled">Select expiry duration...</option>
+                                                                <option value="0" selected="selected">永久生效</option>
+                                                                <option value="1">1 年</option>
+                                                                <option value="2">2 年</option>
+                                                                <option value="4">4 年</option>
+                                                                <option value="8">8 年</option>
                                                             </select>
-                                                            <div class="input-group-addon">Required</div>
+                                                            <div class="input-group-addon">必需</div>
+                                                        </div>
+                                                    </div>
+													<div class="form-group">
+                                                        <label class="sr-only" for="comments">注释</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon">
+                                                                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                                                            </div>
+                                                            <input class="form-control" name="comments" placeholder="注释（可不填）" id="comments" title="" data-original-title="Enter any optional comment" data-cip-id="comments" type="text">
+															<div class="input-group-addon">可选</div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -167,15 +168,15 @@
                                                             <div class="input-group-addon">
                                                                 <span class="glyphicon glyphicon-text-background" aria-hidden="true"></span>
                                                             </div>
-                                                            <input class="form-control" name="passphrase" placeholder="Passphrase" id="passphrase" pattern=".{5,}" title="" required="" data-original-title="Enter a passphrase; at least 5 characters" data-cip-id="passphrase" type="password">
-                                                            <div class="input-group-addon">Required</div>
+                                                            <input class="form-control" name="passphrase" placeholder="私钥的保护密码" id="passphrase" pattern=".{5,}" title="" data-original-title="Enter a passphrase; at least 5 characters" data-cip-id="passphrase" type="password">
+                                                            <div class="input-group-addon">可选</div>
                                                         </div>
                                                         <span id="helpBlock" class="help-block">
-                                                            <a href="#" data-toggle="popover" title="" data-content="Passphrase is a like a password to protect your private PGP key. This password offers an extra layer of protection in case someone manage to steal your public PGP key. Please pick a password you will remember, because if you forget this password, there is no way to recover your password and no way for you to decrypt PGP messages sent to you!" data-original-title="Passphrase">Passphrase: What is this?</a>
+                                                            设定后，每次使用该私密钥匙时，都需要输入密码。密码不可更改，遗忘后无法恢复。
                                                         </span>
                                                     </div>
-                                                    <input value="Generate keys" id="generate_keys_btn" class="btn btn-primary btn-lg btn-block send" name="send" type="submit">
-                                                    <a href="/" id="start_again_btn" class="btn btn-link btn-block hide">Click here to regenerate another pair of key</a>
+                                                    <input value="生成密钥" id="generate_keys_btn" class="btn btn-primary btn-lg btn-block send" name="send" type="submit">
+                                                    <a href="index.html" id="start_again_btn" class="btn btn-link btn-block hide">点击此处，重新生成密钥</a>
                                                 </form>
                                             </div>
                                         </div>
@@ -185,14 +186,14 @@
                                         <input name="btn_update_ts" id="btn_update_ts" value="0" type="hidden">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Public Key</h3>
+                                                <h3 class="panel-title">Public Key - 公开钥匙</h3>
                                             </div>
                                             <div class="panel-body">
-                                                <textarea class="form-control message" rows="7" name="pubkey" placeholder="Your public key will be generated here." id="pubkey" readonly="readonly"></textarea>
+                                                <textarea class="form-control message" rows="7" name="pubkey" placeholder="生成的公钥（public key）会显示在这里。" id="pubkey" readonly="readonly"></textarea>
                                                 <span id="helpBlock" class="help-block">
                                                     <a href="#download_pub_key" class="btn btn-danger download disabled" title="This button will be enabled after you generate your key pair." name="download_pub_key" id="download_pub_key">
                                                         <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
-                                                        Download public key (.ASC file)
+                                                        把这个公钥保存到文件 (.ASC 格式)
                                                     </a>
                                                     <a href="#" class="btn btn-link" data-toggle="popover" title="" data-content="You can put this key on your website or at the bottom signature of your email messages. Anyone wishing to contact you in private will have your public PGP key to send you encrypted messages. This file contain the key in text format and can be opened as text." data-original-title="Public key">Learn More</a>
                                                 </span>
@@ -200,14 +201,14 @@
                                         </div>
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Private Key</h3>
+                                                <h3 class="panel-title">Private Key - 私密钥匙</h3>
                                             </div>
                                             <div class="panel-body">
-                                                <textarea class="form-control message" rows="7" name="privkey" placeholder="Your private key will be generated here." id="privkey" readonly="readonly"></textarea>
+                                                <textarea class="form-control message" rows="7" name="privkey" placeholder="生成的私钥（private key）会显示在这里。" id="privkey" readonly="readonly"></textarea>
                                                 <span id="helpBlock" class="help-block">
                                                     <a href="#download_priv_key" class="btn btn-danger download disabled" title="This button will be enabled after you generate your key pair." name="download_priv_key" id="download_priv_key">
                                                         <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
-                                                        Download private key (.ASC file)
+                                                        把这个私钥保存到文件 (.ASC 格式)
                                                     </a>
                                                     <a href="#" class="btn btn-link" data-toggle="popover" title="" data-content="Save your private PGP key in a file on your computer and keep it as confidential as possible. You will need it to decrypt PGP messages sent to you using your public PGP key. This file contain the key in text format and can be opened as text." data-original-title="Private key">Learn More</a>
                                                 </span>
@@ -222,17 +223,17 @@
                                     <div class="col-md-5">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Your Private Key</h3>
+                                                <h3 class="panel-title">你的私密钥匙（Private Key）</h3>
                                             </div>
                                             <div class="panel-body">
-                                                <textarea class="form-control message" id="sign-private-key" rows="7" placeholder="Paste your private key here (ECC or RSA key)." title="ECC and RSA algorithms working both for sign and verify. You can use ECC keys here."></textarea>
+                                                <textarea class="form-control message" id="sign-private-key" rows="7" placeholder="把你的私密钥匙（Private Key）复制到这里。" title="两种算法（ECC 和 RSA）都可以在此处使用，给信息签名和验证。"></textarea>
                                                 <input type='file' onchange='openFile(event, "sign-private-key")'>
                                                 <br>
                                                 <div class="input-group">
                                                     <div class="input-group-addon">
                                                         <span class="glyphicon glyphicon-text-background" aria-hidden="true"></span>
                                                     </div>
-                                                    <input class="form-control" name="sign-passphrase" placeholder="Passphrase for private key" id="sign-passphrase" pattern=".{5,}" title="Enter your private key passphrase" type="password">
+                                                    <input class="form-control" name="sign-passphrase" placeholder="私钥的保护密码（如果有）" id="sign-passphrase" pattern=".{5,}" title="Enter your private key passphrase" type="password">
                                                 </div>
                                             </div>
                                         </div>
@@ -240,27 +241,27 @@
                                     <div class="col-md-7">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Your Message in Plain Text</h3>
+                                                <h3 class="panel-title">你的讯息（纯文本）</h3>
                                             </div>
                                             <div class="panel-body">
-                                                <textarea class="form-control message" rows="7" id="sign-plain-text" placeholder="Write your message here."></textarea>
+                                                <textarea class="form-control message" rows="7" id="sign-plain-text" placeholder="你要加密的文本信息。"></textarea>
                                                 <input id="sign_src" type='file' onchange='openFile(event, "sign-plain-text")'>
                                                 <br>
                                             </div>
                                         </div>
-                                        <button class="btn btn-primary" id="sign-button">Sign the message</button>
+                                        <button class="btn btn-primary" id="sign-button">为讯息签名</button>
                                         <br>
                                         <br>
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Signed Message</h3>
+                                                <h3 class="panel-title">已签名的讯息</h3>
                                             </div>
                                             <div id="vrAlert_signed"></div>
                                             <div class="panel-body">
-                                                <textarea class="form-control message" rows="7" id="signed-text" placeholder="Here you'll see the signed message." readonly="readonly"></textarea>
+                                                <textarea class="form-control message" rows="7" id="signed-text" placeholder="签名后的信息将会显示在这里。" readonly="readonly"></textarea>
                                                 <br>
                                                 <a id="download-signed-text" style="display:none;" href="javascript:void(0);" title="Download signed text.">
-                                                    <button class="btn btn-secondary">Download signed message</button>
+                                                    <button class="btn btn-secondary">下载已签名的讯息</button>
                                                 </a>
                                             </div>
                                         </div>
@@ -273,7 +274,7 @@
                                     <div class="col-md-5">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Signer's Public Key</h3>
+                                                <h3 class="panel-title">签名者的公开钥匙（Public Key）</h3>
                                             </div>
                                             <div class="panel-body" title="Signed using private key and verified using public key.">
                                                 <textarea class="form-control message" id="Signer-public-key" rows="7" placeholder="Paste signer&#39;s public key here."></textarea>
@@ -285,7 +286,7 @@
                                     <div class="col-md-7">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">PGP-signed Message</h3>
+                                                <h3 class="panel-title">使用 PGP 签名的讯息</h3>
                                             </div>
                                             <div class="panel-body">
                                                 <textarea class="form-control message" rows="7" id="Unverified-plain-text" placeholder="Paste PGP-signed message here."></textarea>
@@ -293,12 +294,12 @@
                                                 <br>
                                             </div>
                                         </div>
-                                        <button class="btn btn-primary" id="verify-signature">Verify signature</button>
+                                        <button class="btn btn-primary" id="verify-signature">验证签名</button>
                                         <br>
                                         <br>
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Raw Message and Status</h3>
+                                                <h3 class="panel-title">原始的讯息和状态</h3>
                                             </div>
                                             <div id="vrAlert"></div>
                                             <div class="panel-body">
@@ -307,7 +308,7 @@
                                                 <a id="download_verified_as_binary" style="display:none; float: right" href="javascript:void(0);">Download as binary
                                             </a>
                                                 <a id="download-pure-text" style="display:none;" href="javascript:void(0);">
-                                                    <button class="btn btn-secondary">Download message</button>
+                                                    <button class="btn btn-secondary">下载讯息</button>
                                                 </a>
                                             </div>
                                         </div>
@@ -561,13 +562,12 @@
                                     <br/>All contributions are greatly appreciated and help towards the ongoing development of this project.
                                 </p>
                                 <p>
-                                    BTC:  33qQZT1F5mWPvqM2bjbxQ3AsSYMXHpJsr6<br/>
+                                    BTC:  50<br/>
 
                                     ETH:  0x641E1449c2f7883F245069f284fC880174b02094<br/>
 
                                     SOL:  AeYJTfLnok1nkncnvXFoKXmH8zrvtB7heNL9Q2sKNaFr<br/>
 
-                                    XMR:  4657q4dnsjLWtzeW4XN3wG9swFumWAZB9i1pegTLMxVAQy5E5AE8uif42kkHWcWc9vDcLUmzeCf3pV7mmrJQQqqe84dtASi
                                 </p>
                                 <p>Forked by <a href="https://github.com/NajmAjmal/PGP" target="_blank">NajmAjmal</a> - Original website <a href="https://PGPtool.org" target="_blank">PGPtool.org</a></p>
                             </div>

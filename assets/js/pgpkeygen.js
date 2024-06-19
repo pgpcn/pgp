@@ -183,49 +183,31 @@ var populateKeysizeDropdown = function() {
     {
         "value": "",
         "class": "disabled",
-        "text": "Select key size...",
-        "selected": "selected"
+        "text": "选择密钥长度...",
+        "selected": null
     },
     {
         "value": "1024",
         "class": null,
-        "text": "1024 bits (good for testing purposes)",
+        "text": "1024 位，速度快，安全性低",
         "selected": null
     },
     {
         "value": "2048",
         "class": null,
-        "text": "2048 bits (secure)",
-        "selected": null
+        "text": "2048 位，安全",
+        "selected": "selected"
     },
     {
         "value": "4096",
         "class": null,
-        "text": "4096 bits (more secure) [Recommended]",
+        "text": "4096 位，更加安全",
         "selected": null
     },
     {
         "value": "8192",
         "class": null,
-        "text": "8192 bits (super secure, super slow)",
-        "selected": null
-    },
-    {
-        "value": "16384",
-        "class": null,
-        "text": "16384 bits (ultra secure, extremely slow)",
-        "selected": null
-    },
-    {
-        "value": "32768",
-        "class": null,
-        "text": "32768 bits (insanely secure, extremely slow)",
-        "selected": null
-    },
-    {
-        "value": "65536",
-        "class": null,
-        "text": "65536 bits (ridiculously secure, absurdly slow)",
+        "text": "8192 位，非常安全，速度很慢",
         "selected": null
     }
 ]
@@ -235,7 +217,7 @@ var populateKeysizeDropdown = function() {
     ecc_bitlengths = [{
             "value": "",
             "class": "disabled",
-            "text": "Select key size...",
+            "text": "选择密钥长度...",
             "selected": "selected"
         },
         //{"value": "163", "class":null, "text":"163 bits (good for testing purposes)", "selected":null},
@@ -243,7 +225,7 @@ var populateKeysizeDropdown = function() {
         {
             "value": "384",
             "class": null,
-            "text": "384 bits (secure)",
+            "text": "384 位，安全",
             "selected": null
         },
         //{"value": "512", "class":null, "text":"512 bits (even more secure)", "selected":null},
