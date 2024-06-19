@@ -17,4 +17,4 @@
 
 ## License
 
-This project is based on <https://github.com/NajmAjmal/PGP> and licensed under the Apache License 2.0 - see the LICENSE file for details.
+This project is based on [NajmAjmal/PGP](https://github.com/NajmAjmal/PGP) and licensed under the Apache License 2.0 - see the LICENSE file for details.

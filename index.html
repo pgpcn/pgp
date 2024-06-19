@@ -321,7 +321,7 @@
                                     <div class="col-md-5">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Reсeiver's Public Key</h3>
+                                                <h3 class="panel-title">收信人的公开密钥（Public Key）</h3>
                                             </div>
                                             <div class="panel-body">
                                                 <textarea class="form-control message" id="signencrypt-receivers-public-key" rows="7" placeholder="Paste the public key here. (RSA only)" title="ECC encryption is not currently supported for now."></textarea>
@@ -332,7 +332,7 @@
                                         </div>
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Signer's Private Key (For signing purpose)</h3>
+                                                <h3 class="panel-title">发信人用来签名的私钥（Private Key）</h3>
                                             </div>
                                             <div class="panel-body">
                                                 <textarea class="form-control message" id="signencrypt-private-key" rows="7" placeholder="Paste the private key here. RSA or ECC is supported." title="If the private key is not provided, the encryption will be performed without signing."></textarea>
@@ -351,7 +351,7 @@
                                     <div class="col-md-7">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Your Message in Plain Text</h3>
+                                                <h3 class="panel-title">要发送的原始信息（纯文本格式）</h3>
                                             </div>
                                             <div class="panel-body">
                                                 <textarea class="form-control message" rows="7" id="signencrypt-plain-text" placeholder="Write your message here."></textarea>
@@ -364,7 +364,7 @@
                                         <br>
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Encrypted PGP Message</h3>
+                                                <h3 class="panel-title">加密后的 PGP 信息</h3>
                                             </div>
                                             <div id="vrAlert3"></div>
                                             <div class="panel-body">
@@ -372,7 +372,7 @@
                                                 <textarea class="form-control message" rows="7" id="signencrypt-text" placeholder="Here you'll see the encrypted and signed message." readonly="readonly"></textarea>
                                                 <br>
                                                 <a id="download-signencrypt-text" style="display:none;" href="javascript:void(0);">
-                                                    <button class="btn btn-secondary">Download encrypted message</button>
+                                                    <button class="btn btn-secondary">下载加密的信息</button>
                                                 </a>
                                             </div>
                                         </div>
