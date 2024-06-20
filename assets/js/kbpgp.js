@@ -52315,7 +52315,10 @@
                         Encoder.prototype.encode = function(type, data) {
                             var f;
                             f = this.frame(type);
-                            return f.begin.concat(this.header(), make_line(), this.b64e(data), formatCheckSum(data), f.end);
+
+                            // return f.begin.concat(this.header(), make_line(), this.b64e(data), formatCheckSum(data), f.end);
+                            // remove header: version and comment
+                            return f.begin.concat(make_line(), this.b64e(data), formatCheckSum(data), f.end);
                         };
 
                         return Encoder;
