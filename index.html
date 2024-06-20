@@ -80,7 +80,7 @@
                                     <div class="col-md-5">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">选项</h3>
+                                                <h3 class="panel-title">生成密钥的选项</h3>
                                                 <span id="helpBlock" class="help-block">
                                                     不熟悉 PGP 原理的人，建议不要修改这些选项，使用默认的设置，直接点击下面的「生成密钥」
                                                 </span>												
@@ -88,12 +88,16 @@
                                             <div class="panel-body">
                                                 <form action="" name="keygen" id="keygen" method="post">
                                                     <div class="form-group">
+                                                    <input value="生成密钥" id="generate_keys_btn" class="btn btn-primary btn-lg btn-block send" name="send" type="submit">
+                                                    <a href="index.html" id="start_again_btn" class="btn btn-link btn-block hide">点击此处，重新生成密钥</a>
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label class="sr-only" for="name">姓名</label>
                                                         <div class="input-group">
                                                             <div class="input-group-addon">
                                                                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                                             </div>
-                                                            <input value="匿名" class="form-control" name="name" placeholder="Your Name" id="name" title="" required="" data-original-title="Enter your name" data-cip-id="name" type="text">
+                                                            <input value="匿名" class="form-control" name="name" placeholder="Your Name" id="name" title="" required="" data-original-title="输入你的姓名（不一定是真名）" data-cip-id="name" type="text">
                                                             <div class="input-group-addon">必需</div>
                                                         </div>
                                                     </div>
@@ -103,10 +107,10 @@
                                                             <div class="input-group-addon">
                                                                 <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
                                                             </div>
-                                                            <input value="nobody@email.address" class="form-control" name="email" placeholder="you@domain.com" id="email" title="" required="" data-original-title="Enter a valid email address" data-cip-id="email" type="email">
+                                                            <input value="nobody@email.address" class="form-control" name="email" placeholder="you@domain.com" id="email" title="" required="" data-original-title="输入有效的电子邮箱地址" data-cip-id="email" type="email">
                                                             <div class="input-group-addon">必需</div>
                                                         </div>
-                                                        <span id="helpBlock" class="help-block">												这些个人信息，会被写进生成的密钥。在使用一些第三方整合软件时，会更加便利。但是，非常容易泄漏个人身份！不熟悉 PGP 工作原理的人，强烈建议不要使用真实信息！
+                                                        <span id="helpBlock" class="help-block">这些个人信息，会被写进生成的密钥。在使用一些第三方整合软件时，会更加便利。但是，非常容易泄漏个人身份！不熟悉 PGP 工作原理的人，强烈建议不要使用真实信息！
                                                         </span>
                                                     </div>
                                                     <div class="form-group">
@@ -141,7 +145,7 @@
                                                             <div class="input-group-addon">
                                                                 <span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span>
                                                             </div>
-                                                            <select name="expire" id="expire" class="form-control" title="" required="" data-original-title="Expiration of your subkeys" data-cip-id="cIPJQ342845641">
+                                                            <select name="expire" id="expire" class="form-control" title="" required="" data-original-title="选择密钥的有效期" data-cip-id="cIPJQ342845641">
                                                                 <option value="" disabled="disabled" class="disabled">Select expiry duration...</option>
                                                                 <option value="0" selected="selected">永久生效</option>
                                                                 <option value="1">1 年</option>
@@ -175,8 +179,6 @@
                                                             设定后，每次使用该私密钥匙时，都需要输入密码。密码不可更改，遗忘后无法恢复。
                                                         </span>
                                                     </div>
-                                                    <input value="生成密钥" id="generate_keys_btn" class="btn btn-primary btn-lg btn-block send" name="send" type="submit">
-                                                    <a href="index.html" id="start_again_btn" class="btn btn-link btn-block hide">点击此处，重新生成密钥</a>
                                                 </form>
                                             </div>
                                         </div>
@@ -195,7 +197,7 @@
                                                         <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
                                                         把这个公钥保存到文件 (.ASC 格式)
                                                     </a>
-                                                    <a href="#" class="btn btn-link" data-toggle="popover" title="" data-content="You can put this key on your website or at the bottom signature of your email messages. Anyone wishing to contact you in private will have your public PGP key to send you encrypted messages. This file contain the key in text format and can be opened as text." data-original-title="Public key">Learn More</a>
+                                                    <a href="#" class="btn btn-link" data-toggle="popover" title="" data-content="你可以把这个公开密钥，放在你的网站、个人简介、或电子邮件的底部签名处。任何希望与您私下联系的人都可以使用这个公开密钥向您发送加密信息。该文件包含文本格式的密钥，可作为文本打开。" data-original-title="公开密钥（public key）">说明</a>
                                                 </span>
                                             </div>
                                         </div>
@@ -210,7 +212,7 @@
                                                         <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
                                                         把这个私钥保存到文件 (.ASC 格式)
                                                     </a>
-                                                    <a href="#" class="btn btn-link" data-toggle="popover" title="" data-content="Save your private PGP key in a file on your computer and keep it as confidential as possible. You will need it to decrypt PGP messages sent to you using your public PGP key. This file contain the key in text format and can be opened as text." data-original-title="Private key">Learn More</a>
+                                                    <a href="#" class="btn btn-link" data-toggle="popover" title="" data-content="将这个私有密钥保存在计算机上的一个文件里，并且尽可能保密，不让任何人知道。你将需要用它来解密，那些使用您的公开密钥（Public key）发送给您的加密信息。该文件包含文本格式的密钥，可以作为文本打开。" data-original-title="私有密钥（Private key）">说明</a>
                                                 </span>
                                             </div>
                                         </div>
@@ -343,7 +345,7 @@
                                                     <div class="input-group-addon">
                                                         <span class="glyphicon glyphicon-text-background" aria-hidden="true"></span>
                                                     </div>
-                                                    <input class="form-control" name="sign-passphrase" placeholder="Passphrase for private key" id="signencrypt-passphrase" pattern=".{5,}" title="Enter your private key passphrase" type="password">
+                                                    <input class="form-control" name="sign-passphrase" placeholder="Passphrase for private key" id="signencrypt-passphrase" pattern=".{5,}" title="输入你的私有密钥（Private key）的保护密码" type="password">
                                                 </div>
                                             </div>
                                         </div>
@@ -385,7 +387,7 @@
                                     <div class="col-md-5">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Receiver's Private Key (For decryption purpose)</h3>
+                                                <h3 class="panel-title">收信人的私钥（Private Key）</h3>
                                             </div>
                                             <div class="panel-body">
                                                 <textarea class="form-control message" id="decryption-private-key" rows="7" placeholder="Paste the private key here to decrypt. RSA key only."></textarea>
