@@ -389,7 +389,7 @@ $(document).ready(function() {
               console.log("Loaded private key with passphrase");
             } else {
               clone = $('#vrError').clone();
-              clone.find('#vrAddrLabel').html("Signing error: Incorrect password for private key.");
+              clone.find('#vrAddrLabel').html("签名错误：发信人的私钥（Private Key）不正确。");
               clone.appendTo($('#vrAlert3'));
             }
           });
@@ -400,7 +400,7 @@ $(document).ready(function() {
         armored: signencryptReceiversPublicKey.val()
       }, function(err, receiver) {
         if (!err) {
-          console.log("receiver's public key is loaded");
+          console.log("收信人的公开密钥（Public Key）已被加载。");
           console.log(receiver);
 
           var params = {
@@ -415,18 +415,18 @@ $(document).ready(function() {
             if (currUser === null) {
               linkText(document.getElementById('signencrypt-text'), document.getElementById('download-signencrypt-text'), 'encrypt');
               clone = $('#vrWarning').clone();
-              clone.find('#vrAddrLabel').html("Message successfully encrypted, but not signed. Private key not loaded.");
+              clone.find('#vrAddrLabel').html("信息已成功加密。（但并没有签名）");
             } else {
               linkText(document.getElementById('signencrypt-text'), document.getElementById('download-signencrypt-text'), 'sign+encrypt');
               clone = $('#vrSuccess').clone();
-              clone.find('#vrAddrLabel').html("Message successfully encrypted and signed.");
+              clone.find('#vrAddrLabel').html("信息已成功加密并签名。");
             }
             clone.appendTo($('#vrAlert3'));
           });
         } else {
           console.log("Error!");
           clone = $('#vrError').clone();
-          clone.find('#vrAddrLabel').html("Encryption error. Incorrect public key.");
+          clone.find('#vrAddrLabel').html("加密失败：公开密钥（Public Key）不正确。");
           clone.appendTo($('#vrAlert3'));
         }
       });
@@ -460,7 +460,7 @@ $(document).ready(function() {
             passphrase: decryptionPassphrase.val()
           }, function(err) {
             if (!err) {
-              console.log("Loaded private key with passphrase");
+              console.log("私钥（Private Key）已被加载。");
 
               // add KeyRing
               var ring = new kbpgp.keyring.KeyRing;
@@ -479,12 +479,12 @@ $(document).ready(function() {
                     armored: decryptionEncryptedText.val()
                   }, function(err, literals) {
                     if (err != null) {
-                      clone.find('#vrAddrLabel').html("Message failed to verify! <br>" + err);
+                      clone.find('#vrAddrLabel').html("信息验证失败！<br>" + err);
                       clone.appendTo($('#vrAlert2'));
                       console.log(err);
                     } else {
                       var decryptedText = literals[0].toString();
-                      console.log("decrypted message: " + decryptedText);
+                      console.log("解密的信息：" + decryptedText);
 
                       decryptionDecryptedText.val(decryptedText);
 
