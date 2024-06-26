@@ -66,10 +66,10 @@
                                 <a href="#verify" aria-controls="verify" role="tab" data-toggle="tab">验证签名</a>
                             </li>
                             <li role="presentation">
-                                <a href="#faq" aria-controls="faq" role="tab" data-toggle="tab">问题</a>
+                                <a href="#about" aria-controls="about" role="tab" data-toggle="tab">关于本站</a>
                             </li>
                             <li role="presentation">
-                                <a href="#about" aria-controls="about" role="tab" data-toggle="tab">关于本站</a>
+                                <a href="#others" aria-controls="others" role="tab" data-toggle="tab">others</a>
                             </li>
                         </ul>
                         <!-- Tab panes -->
@@ -447,92 +447,45 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- FAQ -->
-                            <div role="tabpanel" class="tab-pane" id="faq">
+                            <!-- about -->
+                            <div role="tabpanel" class="tab-pane" id="about">
                                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                                     <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingOne">
+                                        <div class="panel-heading" role="tab" id="heading_01">
                                             <h4 class="panel-title">
-                                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Is it safe for me to generate PGP keys through your website?
+                                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_01" aria-expanded="true" aria-controls="collapse_01">什么是 PGP？
                                             </a>
                                             </h4>
                                         </div>
-                                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                            <div class="panel-body">Yes, it is as safe as
-                                            generating your keys using a local application. The PGP key generation on
-                                            this website is done client-side only. This means the key pairs are
-                                            generated entirely in your own web browser and never leave your
-                                            computer. This website never sees any key related data or the key
-                                            itself.
+                                        <div id="collapse_01" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_01">
+                                            <div class="panel-body">PGP（Pretty Good Privacy）是一种数据加密和解密计算机程序。<br>
+                                                更多介绍参阅<a href="https://zh.wikipedia.org/wiki/PGP">维基百科</a>。这里有更易懂的介绍和使用教程。
                                         </div>
                                         </div>
                                     </div>
                                     <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingTwo">
+                                        <div class="panel-heading" role="tab" id="heading_02">
                                             <h4 class="panel-title">
-                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Can you tell me more about the keys that the program generates?
+                                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_02" aria-expanded="true" aria-controls="collapse_02">使用本站是否安全？
                                             </a>
                                             </h4>
                                         </div>
-                                        <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
-                                            <div class="panel-body">Sure. For starters, it
-                                            enforces using a passphrase with each PGP key generated. This ensures some
-                                            level of protection if your key is ever lost or stolen. It also automatically
-                                            generates two subkeys for you, one for signing and the other for
-                                            encryption. You can use your subkeys to sign and encrypt data and keep
-                                            your private key safe. The bit length of generated subkeys will be
-                                            identical to the length you specified for the primary key. The primary
-                                            key it generates for you never expires. You can, however, set the
-                                            expiration date on the generated subkeys using the 'Expire' option in
-                                            the key generation form.
-                                        </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingThree">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">What is Elliptic Curve Cryptography?
-                                            </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+                                        <div id="collapse_02" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_02">
                                             <div class="panel-body">
-                                                <a href="https://en.wikipedia.org/wiki/Elliptic-curve_cryptography">Elliptic Curve Cryptography
-                                            (ECC)</a>
-                                                is an approach to public-key cryptography based on the algebraic
-                                            structure of elliptic curves over finite fields. One of the main
-                                            benefits in comparison with non-ECC cryptography (with plain Galois
-                                            fields as a basis) is the same level of security provided by keys of
-                                            smaller size. For example, a 256-bit ECC public key should provide
-                                            comparable security to a 3072-bit RSA public key. ECC is still not
-                                            widely supported in many PGP client applications so I advise that you
-                                            generate ECC keys only if you know what you're doing. You can read more
-                                            about it at <a href="http://tools.ietf.org/html/rfc6637">RFC 6637</a>
-                                                .
-                                        
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingFive">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">Why does my web browser or computer slow down when I'm generating keys?
-                                            </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseFive" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFive">
-                                            <div class="panel-body">PGP key generation is a
-                                            resource intensive process. As a result, your may experience increased
-                                            CPU and memory usage on your device, which can result in performance
-                                            issues. The performance impact depends on the hardware capabilities of
-                                            your device.
+<p>使用本站是安全的，因为&mdash;&mdash;</p>
+<ol>
+<li>这个站点使用 javascript，所有加密和解密的运算，都在使用者自己的浏览器上运行，不会向外传输任何数据；</li>
+<li>所有程序代码都是公开的，用户可以检查其中并没有安全隐患。</li>
+</ol>
+<p>注意，所有不安全的站点，也都会声称自己是「安全」的。所以，对上述两点并不完全理解的非技术人士，请咨询值得信任的技术人士后，再使用相关的加密工具。</p>
+<p>本工具可以被安装在其它任何网站目录下，让人们更加便捷而隐秘地使用。但是，本站<strong>无法确保</strong>其它网站会不会在其中加入恶意代码，窃取信息。所以，本工具出现在其它网站时，请咨询值得信任的技术人士，才能放心使用。</p>
                                         </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- About -->
-                            <div role="tabpanel" class="tab-pane" id="about">
+                            <!-- others -->
+                            <div role="tabpanel" class="tab-pane" id="others">
                                 <blockquote>
                                     Pretty Good Privacy (PGP) is a data encryption and decryption computer program
                                 that provides cryptographic privacy and authentication for data communication.
