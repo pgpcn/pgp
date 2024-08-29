@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Set charset to UTF-8 -->
+        <meta charset="utf-8">
+        <div class="title">
+            <title>PGP Tool - 在线 PGP 加密工具</title>
+        </div>
+        <meta title="PGP Tool - 在线 PGP 加密工具">
+        <meta name="description" content="中文版的在线 PGP 工具，方便非技术人士使用信息加密">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="assets/css/custom.css" media="screen">
+        <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <!--[if IE 9]>
+        <script type="text/javascript" src="index_files/js/placeholder.js"></script>
+    <![endif]-->
+        <script type="text/javascript" src="assets/js/script.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row content">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <a href="index.html">← 返回加密工具</a>
+                        <h1 class="title">PGP Tool 中文版</h1>
+                        在线使用 PGP 加密、解密、生成密钥……所有计算都在本地浏览器，没有隐私数据被上传。
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="heading_01">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_01" aria-expanded="true" aria-controls="collapse_01">什么是 PGP？
+                            </a>
+                            </h4>
+                        </div>
+                        <div id="collapse_01" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_01">
+                            <div class="panel-body">PGP（Pretty Good Privacy）是一种数据加密和解密计算机程序。<br>
+                                更多介绍参阅<a href="https://zh.wikipedia.org/wiki/PGP">维基百科</a>。这里有更易懂的介绍和使用教程。
+                        </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="heading_02">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_02" aria-expanded="true" aria-controls="collapse_02">使用本站是否安全？
+                            </a>
+                            </h4>
+                        </div>
+                        <div id="collapse_02" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_02">
+                            <div class="panel-body">
+<p>使用本站是安全的，因为&mdash;&mdash;</p>
+<ol>
+<li>这个站点使用 javascript，所有加密和解密的运算，都在使用者自己的浏览器上运行，不会向外传输任何数据；</li>
+<li>所有程序代码都是公开的，用户可以检查其中并没有安全隐患。</li>
+</ol>
+<p>注意，所有不安全的站点，也都会声称自己是「安全」的。所以，对上述两点并不完全理解的非技术人士，请咨询值得信任的技术人士后，再使用相关的加密工具。</p>
+<p>本工具可以被安装在其它任何网站目录下，让人们更加便捷而隐秘地使用。但是，本站<strong>无法确保</strong>其它网站会不会在其中加入恶意代码，窃取信息。所以，本工具出现在其它网站时，请咨询值得信任的技术人士，才能放心使用。</p>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="heading_01">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_01" aria-expanded="true" aria-controls="collapse_01">知识产权
+                            </a>
+                            </h4>
+                        </div>
+                        <div id="collapse_01" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_01">
+                            <div class="panel-body">
+                                <p>这个工具最初出现在 <a href="https://PGPtool.org" target="_blank">PGPtool.org</a>，本站在 <a href="https://github.com/NajmAjmal/PGP" target="_blank">NajmAjmal</a> 的代码基础上，进行汉化，和一些界面上的更改。</p>
+                                <ol>
+                                <li>这个站点使用 javascript，所有加密和解密的运算，都在使用者自己的浏览器上运行，不会向外传输任何数据；</li>
+                                <li>所有程序代码都是公开的，用户可以检查其中并没有安全隐患。</li>
+                                </ol>
+                                <p>本站延续了原始代码的 Apache Licence 2.0 著作权协议。</p>
+                        </div>
+                        </div>
+                    </div>
+
+                    <p>
+                        This site provides a simple and easy-to-use open source PGP tool for people to generate new PGP keys online, encrypt or decrypt messages and verify signatures with. Usually the common methods for generating keys still involve going to a command
+                    prompt of a Linux/Unix machine and using the GPG utility, or installing a PGP compatible
+                    application on your desktop. I wanted to provide an easier way to generate keys. None of
+                    this would be possible without the outsanding Open Source software I'm utilising such as <a href="https://keybase.io/">KeyBase's</a>
+                        JavaScript implementation of
+                    PGP (<a href="https://github.com/keybase/kbpgp">kbpgp</a>
+                        ). And for file saving capabilities, <a href="https://github.com/eligrey">Eli Grey's</a>
+                        wonderful
+                    <a href="https://github.com/eligrey/FileSaver.js/">FileSaver.js</a>
+                        interface. This site is Open Source and the source code is available on <a href="https://github.com/NajmAjmal/PGP">GitHub</a>
+                        .
+                
+                    </p>
+                    <p>
+                        <strong>Donate and show your support!</strong>
+                        <br/>All contributions are greatly appreciated and help towards the ongoing development of this project.
+                    </p>
+                    <p>
+                        BTC:  50<br/>
+
+                        ETH:  0x641E1449c2f7883F245069f284fC880174b02094<br/>
+
+                        SOL:  AeYJTfLnok1nkncnvXFoKXmH8zrvtB7heNL9Q2sKNaFr<br/>
+
+                    </p>
+                    <p>Forked by <a href="https://github.com/NajmAjmal/PGP" target="_blank">NajmAjmal</a> - Original website <a href="https://PGPtool.org" target="_blank">PGPtool.org</a></p>
+
+
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
