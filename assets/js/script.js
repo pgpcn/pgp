@@ -348,7 +348,7 @@ $(document).ready(function() {
 
               //-> switch alert message
               clone = (pub_f === text_f) ? $('#vrSuccess').clone() : $('#vrWarning').clone();
-              clone.find('#vrAddrLabel').html("Message signature is verified with fingerprint: " + pub_f);
+              clone.find('#vrAddrLabel').html("已成功验证对信息的签名。公钥指纹为： " + pub_f);
             }
             clone.appendTo($('#vrAlert')); //display alert message
           }
@@ -356,7 +356,7 @@ $(document).ready(function() {
 
       } else {
         console.log("Error!");
-        clone.find('#vrAddrLabel').html("Message failed to verify!");
+        clone.find('#vrAddrLabel').html("信息验证失败！");
         clone.appendTo($('#vrAlert'));
       }
     });
@@ -502,10 +502,10 @@ $(document).ready(function() {
                         //-> switch alert message
                         if (pub_f === text_f) {
                           clone = $('#vrSuccess').clone();
-                          clone.find('#vrAddrLabel').html("Message is decrypted by priv, and signature is verified successfully by pub - with fingerprint " + pub_f);
+                          clone.find('#vrAddrLabel').html("信息解密和验证成功！公钥指纹为： " + pub_f);
                         } else {
                           clone = $('#vrWarning').clone();
-                          clone.find('#vrAddrLabel').html("Incorrect fingerprint " + pub_f);
+                          clone.find('#vrAddrLabel').html("指纹错误： " + pub_f);
                         }
 
                         linkText(
@@ -521,7 +521,7 @@ $(document).ready(function() {
 
                       } else {
                         clone = $('#vrWarning').clone();
-                        clone.find('#vrAddrLabel').html('Decrypted, but incorrect fingerprint - signature not verified.<br>If this message encrypted without signature - ignore this message.');
+                        clone.find('#vrAddrLabel').html('信息已成功解密，但是签名验证失败。<br>如果信息本来就只有加密而没有签名，请无视此提示。');
 
                         linkText(
                           document.getElementById('decryption-decrypted-text'),
@@ -586,7 +586,7 @@ $(document).ready(function() {
 
 
                       //just display an error, without any message...
-                      clone.find('#vrAddrLabel').html("this... Message failed to verify! <br>" + err);
+                      clone.find('#vrAddrLabel').html("信息验证失败！请检查用于验证签名的密钥。<br>" + err);
                       clone.appendTo($('#vrAlert2'));
                       console.log(err);
                     } else {
@@ -632,7 +632,7 @@ $(document).ready(function() {
 
                       } else {
                         clone = $('#vrWarning').clone();
-                        clone.find('#vrAddrLabel').html('Decrypted, but incorrect fingerprint - signature not verified.<br>If this message encrypted without signature - ignore this message.');
+                        clone.find('#vrAddrLabel').html('信息已成功解密，但是签名验证失败。<br>如果信息本来就只有加密而没有签名，请无视此提示。');
 
                         linkText(
                           document.getElementById('decryption-decrypted-text'),
@@ -664,8 +664,8 @@ $(document).ready(function() {
           clone.appendTo($('#vrAlert2'));
         }
       } else {
-        console.log("Error in decryption import");
-        clone.find('#vrAddrLabel').html("Error in decryption import");
+        console.log("解密信息失败。请检查密钥是否正确。");
+        clone.find('#vrAddrLabel').html("解密信息失败。请检查密钥是否正确。");
         clone.appendTo($('#vrAlert2'));
       }
 
