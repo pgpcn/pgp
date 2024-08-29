@@ -45,7 +45,7 @@
                 <div class="col-md-12">
                     <div class="page-header">
                         <h1 class="title">PGP Tool 中文版</h1>
-                        在线使用 PGP 加密、解密、生成密钥……所有计算都在本地浏览器，没有隐私数据被上传。
+                        在线使用 PGP 加密、解密、生成密钥……所有计算都在本地浏览器，没有隐私数据被上传。<a href="about.html">关于本站</a>。
                     </div>
                     <div class="tabbable">
                         <!-- Nav tabs -->
@@ -64,12 +64,6 @@
                             </li>
                             <li role="presentation">
                                 <a href="#verify" aria-controls="verify" role="tab" data-toggle="tab">验证签名</a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#about" aria-controls="about" role="tab" data-toggle="tab">关于本站</a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#others" aria-controls="others" role="tab" data-toggle="tab">others</a>
                             </li>
                         </ul>
                         <!-- Tab panes -->
@@ -176,7 +170,7 @@
                                                             <div class="input-group-addon">可选</div>
                                                         </div>
                                                         <span id="helpBlock" class="help-block">
-                                                            设定后，每次使用该私密钥匙时，都需要输入密码。密码不可更改，遗忘后无法恢复。
+                                                            设定后，每次使用该私密钥匙时，都需要输入密码。密码不可更改，遗忘后无法恢复。也可以不设定密码，直接使用私钥。
                                                         </span>
                                                     </div>
                                                 </form>
@@ -228,7 +222,7 @@
                                                 <h3 class="panel-title">你的私密钥匙（Private Key）</h3>
                                             </div>
                                             <div class="panel-body">
-                                                <textarea class="form-control message" id="sign-private-key" rows="7" placeholder="把你的私密钥匙（Private Key）复制到这里。" title="两种算法（ECC 和 RSA）都可以在此处使用，给信息签名和验证。"></textarea>
+                                                <textarea class="form-control message" id="sign-private-key" rows="7" placeholder="把你的私密钥匙（Private Key）复制到这里。如果对方知道你的公开钥匙（Public Key），可以通过【验证签名】，确认这个消息是由你发出，而非别人假冒。" title="两种算法（ECC 和 RSA）都可以在此处使用，给信息签名和验证。"></textarea>
                                                 <input type='file' onchange='openFile(event, "sign-private-key")'>
                                                 <br>
                                                 <div class="input-group">
@@ -278,8 +272,8 @@
                                             <div class="panel-heading">
                                                 <h3 class="panel-title">签名者的公开钥匙（Public Key）</h3>
                                             </div>
-                                            <div class="panel-body" title="Signed using private key and verified using public key.">
-                                                <textarea class="form-control message" id="Signer-public-key" rows="7" placeholder="Paste signer&#39;s public key here."></textarea>
+                                            <div class="panel-body">
+                                                <textarea class="form-control message" id="Signer-public-key" rows="7" placeholder="将签名者的公开钥匙（Public Key）复制到这里。"></textarea>
                                                 <input type='file' onchange='openFile(event, "Signer-public-key")'>
                                                 <br>
                                             </div>
@@ -291,7 +285,7 @@
                                                 <h3 class="panel-title">使用 PGP 签名的讯息</h3>
                                             </div>
                                             <div class="panel-body">
-                                                <textarea class="form-control message" rows="7" id="Unverified-plain-text" placeholder="Paste PGP-signed message here."></textarea>
+                                                <textarea class="form-control message" rows="7" id="Unverified-plain-text" placeholder="已经被签名的信息。"></textarea>
                                                 <input type='file' onchange='openFile(event, "Unverified-plain-text")'>
                                                 <br>
                                             </div>
@@ -305,12 +299,12 @@
                                             </div>
                                             <div id="vrAlert"></div>
                                             <div class="panel-body">
-                                                <textarea class="form-control message" rows="7" id="pure-text" placeholder="Here you'll see the raw message if it's signed and verified." readonly=""></textarea>
+                                                <textarea class="form-control message" rows="7" id="pure-text" placeholder="如果已签名的信息被正确验证，这里会显示验证后的原始信息。" readonly=""></textarea>
                                                 <br>
-                                                <a id="download_verified_as_binary" style="display:none; float: right" href="javascript:void(0);">Download as binary
+                                                <a id="download_verified_as_binary" style="display:none; float: right" href="javascript:void(0);">下载为二进制文件
                                             </a>
                                                 <a id="download-pure-text" style="display:none;" href="javascript:void(0);">
-                                                    <button class="btn btn-secondary">下载讯息</button>
+                                                    <button class="btn btn-secondary">下载讯息文本</button>
                                                 </a>
                                             </div>
                                         </div>
@@ -326,7 +320,7 @@
                                                 <h3 class="panel-title">收信人的公开密钥（Public Key）</h3>
                                             </div>
                                             <div class="panel-body">
-                                                <textarea class="form-control message" id="signencrypt-receivers-public-key" rows="7" placeholder="Paste the public key here. (RSA only)" title="ECC encryption is not currently supported for now."></textarea>
+                                                <textarea class="form-control message" id="signencrypt-receivers-public-key" rows="7" placeholder="将收信人的公钥（Public Key）复制到这里。（目前只支持 RSA 算法）" title="目前只支持 RSA，不支持 ECC 加密算法。"></textarea>
                                                 <input type='file' onchange='openFile(event, "signencrypt-receivers-public-key")'>
                                                 <br>
                                                 <br>
@@ -334,10 +328,10 @@
                                         </div>
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">发信人用来签名的私钥（Private Key）</h3>
+                                                <h3 class="panel-title">可选项：发信人用来签名的私钥（Private Key）</h3>
                                             </div>
                                             <div class="panel-body">
-                                                <textarea class="form-control message" id="signencrypt-private-key" rows="7" placeholder="Paste the private key here. RSA or ECC is supported." title="If the private key is not provided, the encryption will be performed without signing."></textarea>
+                                                <textarea class="form-control message" id="signencrypt-private-key" rows="7" placeholder="不熟悉的用户，可以略过这一步。可以在加密的同时，用你的私钥对信息进行签名。收信人可以通过验证签名，确认信息是有你发出，而不是他人冒名顶替。" title="支持 RSA 和 ECC 密钥。"></textarea>
                                                 <input type='file' onchange='openFile(event, "signencrypt-private-key")'>
                                                 <br>
                                                 <br>
@@ -345,7 +339,7 @@
                                                     <div class="input-group-addon">
                                                         <span class="glyphicon glyphicon-text-background" aria-hidden="true"></span>
                                                     </div>
-                                                    <input class="form-control" name="sign-passphrase" placeholder="Passphrase for private key" id="signencrypt-passphrase" pattern=".{5,}" title="输入你的私有密钥（Private key）的保护密码" type="password">
+                                                    <input class="form-control" name="sign-passphrase" placeholder="私钥的保护密码（如果有）" id="signencrypt-passphrase" pattern=".{5,}" title="输入你的私有密钥（Private key）的保护密码" type="password">
                                                 </div>
                                             </div>
                                         </div>
@@ -353,15 +347,15 @@
                                     <div class="col-md-7">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">要发送的原始信息（纯文本格式）</h3>
+                                                <h3 class="panel-title">要发送的信息</h3>
                                             </div>
                                             <div class="panel-body">
-                                                <textarea class="form-control message" rows="7" id="signencrypt-plain-text" placeholder="Write your message here."></textarea>
+                                                <textarea class="form-control message" rows="7" id="signencrypt-plain-text" placeholder="需要加密的原始信息，纯文本格式。"></textarea>
                                                 <input type='file' onchange='openFile(event, "signencrypt-plain-text")'>
                                                 <br>
                                             </div>
                                         </div>
-                                        <button class="btn btn-primary" id="signencrypt-button" title="If the private key is not provided, the encryption will be performed just by the public key.">Encrypt the message</button>
+                                        <button class="btn btn-primary" id="signencrypt-button" title="如果未提供签名私钥，则只使用收信人的公钥，对信息进行加密。">加密信息</button>
                                         <br>
                                         <br>
                                         <div class="panel panel-default">
@@ -371,7 +365,7 @@
                                             <div id="vrAlert3"></div>
                                             <div class="panel-body">
                                                 <textarea class="form-control message" style="display: none;" rows="7" id="encrypted-text" placeholder="this is hidden textarea to copy from here an encrypted text" readonly="readonly"></textarea>
-                                                <textarea class="form-control message" rows="7" id="signencrypt-text" placeholder="Here you'll see the encrypted and signed message." readonly="readonly"></textarea>
+                                                <textarea class="form-control message" rows="7" id="signencrypt-text" placeholder="这里会显示信息加密后的字符文本。" readonly="readonly"></textarea>
                                                 <br>
                                                 <a id="download-signencrypt-text" style="display:none;" href="javascript:void(0);">
                                                     <button class="btn btn-secondary">下载加密的信息</button>
@@ -390,7 +384,7 @@
                                                 <h3 class="panel-title">收信人的私钥（Private Key）</h3>
                                             </div>
                                             <div class="panel-body">
-                                                <textarea class="form-control message" id="decryption-private-key" rows="7" placeholder="Paste the private key here to decrypt. RSA key only."></textarea>
+                                                <textarea class="form-control message" id="decryption-private-key" rows="7" placeholder="复制私钥（Private Key）到这里，用于解密。只支持 RSA 密钥。"></textarea>
                                                 <input type='file' onchange='openFile(event, "decryption-private-key")'>
                                                 <br>
                                                 <br>
@@ -398,16 +392,16 @@
                                                     <div class="input-group-addon">
                                                         <span class="glyphicon glyphicon-text-background" aria-hidden="true"></span>
                                                     </div>
-                                                    <input class="form-control" name="decryption-passphrase" placeholder="Passphrase for private key" id="decryption-passphrase" pattern=".{5,}" title="Enter your private key passphrase" type="password">
+                                                    <input class="form-control" name="decryption-passphrase" placeholder="私钥的保护密码（如果有）" id="decryption-passphrase" pattern=".{5,}" title="输入你的私钥保护密码" type="password">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Signer's Public Key</h3>
+                                                <h3 class="panel-title">可选项：发信人的签名公钥（Public Key）</h3>
                                             </div>
                                             <div class="panel-body">
-                                                <textarea class="form-control message" id="signer_public_key" rows="7" placeholder="Paste the signer's public key here if the message is signed. ECC key is supported. (Leave this field if the message is not signed.)"></textarea>
+                                                <textarea class="form-control message" id="signer_public_key" rows="7" placeholder="如果信息在加密的同时也进行了签名，则将签名者（发信人）的公开密钥（Public Key）复制到这里。如果信息没有被签名过，则将这个输入框留空。（支持 RSA 和 ECC 算法）"></textarea>
                                                 <input type='file' onchange='openFile(event, "signer_public_key")'>
                                                 <br>
                                                 <br>
@@ -417,114 +411,35 @@
                                     <div class="col-md-7">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Encrypted PGP Message</h3>
+                                                <h3 class="panel-title">已加密的信息</h3>
                                             </div>
                                             <div class="panel-body">
-                                                <textarea class="form-control message" rows="7" id="decryption-encrypted-text" placeholder="Enter the encrypted message here."></textarea>
+                                                <textarea class="form-control message" rows="7" id="decryption-encrypted-text" placeholder="将收到的，已经过加密的信息，复制在这里。"></textarea>
                                                 <input type='file' onchange='openFile(event, "decryption-encrypted-text")'>
                                                 <br>
                                             </div>
                                         </div>
                                         <!--Here you can see the multistring commentary-->
-                                        <button class="btn btn-primary" id="decryption-button">Decrypt the message</button>
+                                        <button class="btn btn-primary" id="decryption-button">解密信息</button>
                                         <br>
                                         <br>
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Decrypted Message in Plain Text</h3>
+                                                <h3 class="panel-title">解密后的文本信息</h3>
                                             </div>
                                             <div class="panel-body">
                                                 <div id="vrAlert2"></div>
-                                                <textarea class="form-control message" rows="7" id="decryption-decrypted-text" placeholder="Here you'll see the decrypted message." readonly="readonly"></textarea>
+                                                <textarea class="form-control message" rows="7" id="decryption-decrypted-text" placeholder="信息被解密后，将会显示在这里。" readonly="readonly"></textarea>
                                                 <br>
-                                                <a id="download_decrypt_verify_as_binary" style="display:none; float: right" href="javascript:void(0);">Download as binary
+                                                <a id="download_decrypt_verify_as_binary" style="display:none; float: right" href="javascript:void(0);">下载为二进制文件
                                             </a>
                                                 <a id="download-decrypted-text" style="display:none;" href="javascript:void(0);">
-                                                    <button class="btn btn-secondary">Download decrypted text</button>
+                                                    <button class="btn btn-secondary">下载解密后的文本</button>
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- about -->
-                            <div role="tabpanel" class="tab-pane" id="about">
-                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="heading_01">
-                                            <h4 class="panel-title">
-                                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_01" aria-expanded="true" aria-controls="collapse_01">什么是 PGP？
-                                            </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapse_01" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_01">
-                                            <div class="panel-body">PGP（Pretty Good Privacy）是一种数据加密和解密计算机程序。<br>
-                                                更多介绍参阅<a href="https://zh.wikipedia.org/wiki/PGP">维基百科</a>。这里有更易懂的介绍和使用教程。
-                                        </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="heading_02">
-                                            <h4 class="panel-title">
-                                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_02" aria-expanded="true" aria-controls="collapse_02">使用本站是否安全？
-                                            </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapse_02" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_02">
-                                            <div class="panel-body">
-<p>使用本站是安全的，因为&mdash;&mdash;</p>
-<ol>
-<li>这个站点使用 javascript，所有加密和解密的运算，都在使用者自己的浏览器上运行，不会向外传输任何数据；</li>
-<li>所有程序代码都是公开的，用户可以检查其中并没有安全隐患。</li>
-</ol>
-<p>注意，所有不安全的站点，也都会声称自己是「安全」的。所以，对上述两点并不完全理解的非技术人士，请咨询值得信任的技术人士后，再使用相关的加密工具。</p>
-<p>本工具可以被安装在其它任何网站目录下，让人们更加便捷而隐秘地使用。但是，本站<strong>无法确保</strong>其它网站会不会在其中加入恶意代码，窃取信息。所以，本工具出现在其它网站时，请咨询值得信任的技术人士，才能放心使用。</p>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- others -->
-                            <div role="tabpanel" class="tab-pane" id="others">
-                                <blockquote>
-                                    Pretty Good Privacy (PGP) is a data encryption and decryption computer program
-                                that provides cryptographic privacy and authentication for data communication.
-                                PGP is often used for signing, encrypting, and decrypting texts, e-mails, files,
-                                directories, and whole disk partitions and to increase the security of e-mail
-                                communications. It was created by Phil Zimmermann in 1991. PGP and similar
-                                software follow the OpenPGP standard (RFC 4880) for encrypting and decrypting
-                                data. 
-                                    <em>
-                                        Source: <a href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy" target="_blank">Wikipedia</a>
-                                    </em>
-                                </blockquote>
-                                <p>
-                                    This site provides a simple and easy-to-use open source PGP tool for people to generate new PGP keys online, encrypt or decrypt messages and verify signatures with. Usually the common methods for generating keys still involve going to a command
-                                prompt of a Linux/Unix machine and using the GPG utility, or installing a PGP compatible
-                                application on your desktop. I wanted to provide an easier way to generate keys. None of
-                                this would be possible without the outsanding Open Source software I'm utilising such as <a href="https://keybase.io/">KeyBase's</a>
-                                    JavaScript implementation of
-                                PGP (<a href="https://github.com/keybase/kbpgp">kbpgp</a>
-                                    ). And for file saving capabilities, <a href="https://github.com/eligrey">Eli Grey's</a>
-                                    wonderful
-                                <a href="https://github.com/eligrey/FileSaver.js/">FileSaver.js</a>
-                                    interface. This site is Open Source and the source code is available on <a href="https://github.com/NajmAjmal/PGP">GitHub</a>
-                                    .
-                            
-                                </p>
-                                <p>
-                                    <strong>Donate and show your support!</strong>
-                                    <br/>All contributions are greatly appreciated and help towards the ongoing development of this project.
-                                </p>
-                                <p>
-                                    BTC:  50<br/>
-
-                                    ETH:  0x641E1449c2f7883F245069f284fC880174b02094<br/>
-
-                                    SOL:  AeYJTfLnok1nkncnvXFoKXmH8zrvtB7heNL9Q2sKNaFr<br/>
-
-                                </p>
-                                <p>Forked by <a href="https://github.com/NajmAjmal/PGP" target="_blank">NajmAjmal</a> - Original website <a href="https://PGPtool.org" target="_blank">PGPtool.org</a></p>
                             </div>
                         </div>
                     </div>
