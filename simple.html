@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Set charset to UTF-8 -->
+        <meta charset="utf-8">
+        <div class="title">
+            <title>PGP Tool - 在线 PGP 加密工具</title>
+        </div>
+        <meta title="PGP Tool - 在线 PGP 加密工具">
+        <meta name="description" content="中文版的在线 PGP 工具，方便非技术人士使用信息加密">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="assets/css/custom.css" media="screen">
+        <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="assets/js/kbpgp.js"></script>
+        <script type="text/javascript" src="assets/js/FileSaver.js"></script>
+        <script type="text/javascript" src="assets/js/pgpkeygen.js"></script>
+    <!--[if IE 9]>
+        <script type="text/javascript" src="index_files/js/placeholder.js"></script>
+    <![endif]-->
+        <script type="text/javascript" src="assets/js/script.js"></script>
+    </head>
+    <body>
+        <div id="filename_temp" style="display:none;" title="This is temp div for saving here a file name if file was been loaded by input.">pgp-message</div>
+        <!--status notification-->
+        <div class="hidden">
+            <div class="alert alert-success fade in" id="vrSuccess">
+                <button aria-hidden="true" class="close" data-dismiss="alert" type="button">&times;</button>
+                <span id="vrAddrLabel"></span>
+            </div>
+            <div class="alert alert-danger fade in" id="vrError">
+                <button aria-hidden="true" class="close" data-dismiss="alert" type="button">&times;</button>
+                <span id="vrAddrLabel"></span>
+            </div>
+            <div class="alert alert-warning fade in" id="vrWarning">
+                <button aria-hidden="true" class="close" data-dismiss="alert" type="button">&times;</button>
+                <span id="vrAddrLabel"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row content">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1 class="title">PGP Tool 中文版</h1>
+                        在线使用 PGP 加密、解密、生成密钥……所有计算都在本地浏览器，没有隐私数据被上传。<a href="about.html">关于本站</a>。
+                    </div>
+                    <div class="tabbable">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+							<li role="presentation">
+                                <a href="#signencrypt" aria-controls="sign" role="tab" data-toggle="tab">加密</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#decrypt" aria-controls="decrypt" role="tab" data-toggle="tab">解密</a>
+                            </li>
+                            <li role="presentation" class="active">
+                                <a href="#generator" aria-controls="generator" role="tab" data-toggle="tab">生成密钥</a>
+                            </li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <!-- Key gen -->
+                            <div role="tabpanel" class="tab-pane active" id="generator">
+                                <div class="row generator">
+                                    <div class="col-md-5">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <span id="helpBlock" class="help-block">
+                                                    点击下面按钮，默认生成 RSA 2048 匿名密钥。如果需要在密钥中添加个人信息或更改设置，请使用<a href="advance.html#generator" class="btn-link">高级页面</a>。
+                                                </span>												
+                                            </div>
+                                            <div class="panel-body">
+                                                <form action="" name="keygen" id="keygen" method="post">
+                                                    <div class="form-group">
+                                                    <input value="生成密钥" id="generate_keys_btn" class="btn btn-primary btn-lg btn-block send" name="send" type="submit">
+                                                    <a href="javascript:location.reload();" id="start_again_btn" class="btn btn-link btn-block hide">点击此处，重新生成密钥</a>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input value="nobody" name="name" id="name" type="hidden">
+                                                        <input value="nobody@email.address" name="email" id="email" type="hidden">
+                                                        <input value="rsa" name="algorithm" id="algorithm" type="hidden">
+                                                        <input value="2048" name="bitlength" id="bitlength" type="hidden">
+                                                        <input value="0" name="expire" id="expire" type="hidden">
+                                                        <input value="" name="comments" id="comments" type="hidden">
+                                                        <input value="" name="passphrase" id="passphrase" type="hidden">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input name="key_short_id" id="key_short_id" value="" type="hidden">
+                                        <input name="btn_update_ts" id="btn_update_ts" value="0" type="hidden">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">Public Key - 公开钥匙</h3>
+                                                <span id="helpBlock" class="help-block">
+                                                    请保存这个<b>公开钥匙</b>。你可以把它发给任何人，对方向你发送加密信息时，使用这个公开密钥进行加密。
+                                                </span>	
+                                            </div>
+                                            <div class="panel-body">
+                                                <textarea class="form-control message" rows="5" name="pubkey" placeholder="生成的公钥（public key）会显示在这里。" id="pubkey" readonly="readonly"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">Private Key - 私密钥匙</h3>
+                                                <span id="helpBlock" class="help-block">
+                                                    请保存这个<b>私密钥匙</b>。<b><u>不要向任何人泄露！！</u></b>别人发给你的加密信息，你将使用这个私密钥匙进行解密。
+                                                </span>	
+                                            </div>
+                                            <div class="panel-body">
+                                                <textarea class="form-control message" rows="5" name="privkey" placeholder="生成的私钥（private key）会显示在这里。" id="privkey" readonly="readonly"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Encrypt+Sign message -->
+                            <div role="tabpanel" class="tab-pane" id="signencrypt">
+                                <div class="row generator">
+                                    <div class="col-md-5">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">收信人的公开密钥（Public Key）</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <textarea class="form-control message" id="signencrypt-receivers-public-key" rows="7" placeholder="将收信人的公钥（Public Key）复制到这里。" title="将收信人的公钥（Public Key）复制到这里。"></textarea>
+                                                <input name="signencrypt-private-key" id="signencrypt-private-key" type="hidden">
+                                                <input name="sign-passphrase" id="signencrypt-passphrase" type="hidden">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">要发送的信息</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <textarea class="form-control message" rows="7" id="signencrypt-plain-text" placeholder="需要加密的原始信息，纯文本格式。"></textarea>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary btn-lg btn-block send" id="signencrypt-button" title="如果未提供签名私钥，则只使用收信人的公钥，对信息进行加密。">加密信息</button>
+                                        <br>
+                                        <br>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">加密后的 PGP 信息</h3>
+                                            </div>
+                                            <div id="vrAlert3"></div>
+                                            <div class="panel-body">
+                                                <textarea class="form-control message" style="display: none;" rows="7" id="encrypted-text" placeholder="this is hidden textarea to copy from here an encrypted text" readonly="readonly"></textarea>
+                                                <textarea class="form-control message" rows="7" id="signencrypt-text" placeholder="这里会显示信息加密后的字符文本。" readonly="readonly"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Decrypt message (and verify signature, if signed)-->
+                            <div role="tabpanel" class="tab-pane" id="decrypt">
+                                <div class="row generator">
+                                    <div class="col-md-5">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">收信人的私钥（Private Key）</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <textarea class="form-control message" id="decryption-private-key" rows="7" placeholder="复制私钥（Private Key）到这里，用于解密。只支持 RSA 密钥。"></textarea>
+                                                <input name="decryption-passphrase" id="decryption-passphrase" type="hidden">
+                                                <input name="signer_public_key" id="signer_public_key" type="hidden">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">已加密的信息</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <textarea class="form-control message" rows="7" id="decryption-encrypted-text" placeholder="将收到的，已经过加密的信息，复制在这里。"></textarea>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary btn-lg btn-block send" id="decryption-button">解密信息</button>
+                                        <br>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">解密后的文本信息</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div id="vrAlert2"></div>
+                                                <textarea class="form-control message" rows="7" id="decryption-decrypted-text" placeholder="信息被解密后，将会显示在这里。" readonly="readonly"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="kphc cip-genpw-icon cip-icon-key-big" style="z-index: 3; top: 579.2px; left: 672.317px;"></div>
+        <div id="kphc-pw-dialog" class="kphc">
+            <div style="display: none;" tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="cip-genpw-dialog" aria-labelledby="ui-id-1">
+                <div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle">
+                    <span id="ui-id-1" class="ui-dialog-title">Password Generator</span>
+                    <button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="×">
+                        <span class="ui-button-icon ui-icon ui-icon-closethick"></span>
+                        <span class="ui-button-icon-space"></span>
+                        ×
+                    </button>
+                </div>
+                <div id="cip-genpw-dialog" class="ui-dialog-content ui-widget-content">
+                    <div class="cip-genpw-clearfix">
+                        <button id="cip-genpw-btn-generate" class="b2c-btn b2c-btn-primary b2c-btn-small" style="float: left;">Generate</button>
+                        <button id="cip-genpw-btn-clipboard" class="b2c-btn b2c-btn-small" style="float: right;">Copy to clipboard</button>
+                    </div>
+                    <div class="b2c-input-append cip-genpw-password-frame">
+                        <input id="cip-genpw-textfield-password" class="cip-genpw-textfield" type="text">
+                        <span class="b2c-add-on" id="cip-genpw-quality">123 Bits</span>
+                    </div>
+                    <label class="cip-genpw-label">
+                        <input id="cip-genpw-checkbox-next-field" class="cip-genpw-checkbox" type="checkbox">also fill in the next password-field
+                    </label>
+                    <button id="cip-genpw-btn-fillin" class="b2c-btn b2c-btn-small">Fill in &amp;copy to clipboard</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
