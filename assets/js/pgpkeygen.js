@@ -57,7 +57,7 @@ var genKeyPair = function() {
     _debug("Update buttons");
     $('#generate_keys_btn').css('pointer-events', 'none');
     $('#generate_keys_btn').addClass("disabled");
-    $('#generate_keys_btn').val("Generating .");
+    $('#generate_keys_btn').val("正在生成，请稍候 .");
 
     // Create a progress hook
     var my_asp = new kbpgp.ASP({
@@ -74,12 +74,12 @@ var genKeyPair = function() {
             // Else we continue to update button text
             var btn = $('#generate_keys_btn');
 
-            if (btn.val() == 'Generating .') {
-                btn.val('Generating ..');
-            } else if (btn.val() == 'Generating ..') {
-                btn.val('Generating ...');
+            if (btn.val() == '正在生成，请稍候 .') {
+                btn.val('正在生成，请稍候 ..');
+            } else if (btn.val() == '正在生成，请稍候 ..') {
+                btn.val('正在生成，请稍候 ...');
             } else {
-                btn.val('Generating .');
+                btn.val('正在生成，请稍候 .');
             }
 
             // And we update the timestamp
@@ -140,7 +140,7 @@ var genKeyPair = function() {
         // Enable button once again (NOTE: user should refresh to re-gen)
         $('#generate_keys_btn').removeClass("disabled");
         $('#generate_keys_btn').removeClass("btn-primary").addClass("btn-success");
-        $('#generate_keys_btn').val("Finished");
+        $('#generate_keys_btn').val("密钥已生成，请手动保存。");
         $('#start_again_btn').removeClass("hide").fadeIn();
     });
 
